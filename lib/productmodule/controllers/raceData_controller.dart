@@ -9,8 +9,6 @@ class RaceDataController extends GetxController{
 
   @override
   onInit() async {
-    await fetchRaceData(3);
-    sortRaces();
     super.onInit();
   }
   void sortRaces(){

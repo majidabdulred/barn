@@ -6,4 +6,4 @@ After completion of this Project it will be available here and on IOS and Google
 
 # Flutter
 This App is created using flutter framework. Its my first android app and the first flutter project.
-I am currently at beginner stage in flutter so if you are an experienced developer and want to mentor me you are very welcome. Or if you are begginner like me and want to collaborate and learn with me on this project you are most welcome too. Feel free to contact me.
+I am currently at beginner stage in flutter so if you are an experienced developer and want to mentor me you are very welcome or if you are begginner like me and want to collaborate and learn with me on this project you are most welcome too. Feel free to contact me.

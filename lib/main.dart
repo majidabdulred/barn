@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:majidapp/commonmodule/AppString.dart';
-import 'package:majidapp/pages/SIngleChickenView.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';

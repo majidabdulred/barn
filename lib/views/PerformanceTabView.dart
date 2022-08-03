@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:majidapp/commonviews/PropertyView.dart';
-import 'package:majidapp/commonviews/skeletonClass.dart';
 import 'package:majidapp/productmodule/models/RaceDataModel.dart';
 
 
