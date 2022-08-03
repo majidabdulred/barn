@@ -1,6 +1,6 @@
 import 'package:http/http.dart' as http;
 import 'package:majidapp/commonmodule/demoAPIdata.dart';
-import 'package:majidapp/productmodule/models/RaceDataModel.dart';
+import 'package:majidapp/chickenmodule/models/RaceDataModel.dart';
 
 class GetChickenAPI{
   static var client=http.Client();

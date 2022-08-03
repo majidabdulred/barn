@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:majidapp/commonviews/PropertyView.dart';
 import 'package:majidapp/commonviews/skeletonClass.dart';
 
-import 'package:majidapp/productmodule/models/RaceDataModel.dart';
+import 'package:majidapp/chickenmodule/models/RaceDataModel.dart';
 class BasicTabView extends StatelessWidget {
   final Chicken chicken;
   const BasicTabView(

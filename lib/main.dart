@@ -4,6 +4,7 @@ import 'package:majidapp/commonmodule/AppString.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:majidapp/pages/mainPage.dart';
+import 'package:majidapp/views/RacesTabView.dart';
 Future<void> main() async{
   runApp(const MyApp());
 }

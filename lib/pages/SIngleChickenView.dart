@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:majidapp/productmodule/models/RaceDataModel.dart';
+import 'package:majidapp/chickenmodule/models/RaceDataModel.dart';
 import 'package:majidapp/views/BasicTabView.dart';
 import 'package:majidapp/views/PerformanceTabView.dart';
+import 'package:majidapp/views/RacesTabView.dart';
 
 class SingleChickenTabView extends StatefulWidget {
   const SingleChickenTabView({ Key? key }) : super(key: key);
-
-
   @override
   State<SingleChickenTabView> createState() => _SingleChickenTabViewState();
 }
 
 class _SingleChickenTabViewState extends State<SingleChickenTabView> with SingleTickerProviderStateMixin {
-  // RaceDataController raceData = Get.put(RaceDataController());
   late TabController _tabController;
   @override
   void initState() {
     super.initState();
     _tabController = TabController(vsync: this, length: 3);
+    // _tabController.addListener(() {
+    //   if (_tabController.index==2){
+    //
+    //   }
+    // })
   }
+
 
   @override
   void dispose() {
@@ -36,8 +40,8 @@ class _SingleChickenTabViewState extends State<SingleChickenTabView> with Single
           controller: _tabController,
           tabs: const [
             Tab(text: 'BASIC INFO'),
-            Tab(text: 'RIGHT'),
-            Tab(text: "Third",)
+            Tab(text: 'PERFORMANCE'),
+            Tab(text: "RACES",)
           ],
         ),
       ),
@@ -46,10 +50,7 @@ class _SingleChickenTabViewState extends State<SingleChickenTabView> with Single
         children: [
           BasicTabView(chicken),
           PerformanceTabView(chicken),
-          Text("This is This is Third"),
-          // Text("This is This is Third"),
-          // Text("This is This is Third"),
-
+          RacesTabView(chicken.id),
     ],
     ),
     );

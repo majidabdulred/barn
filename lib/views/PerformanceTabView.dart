@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:majidapp/commonviews/PropertyView.dart';
-import 'package:majidapp/productmodule/models/RaceDataModel.dart';
+import 'package:majidapp/chickenmodule/models/RaceDataModel.dart';
 
 
 class PerformanceTabView extends StatelessWidget {

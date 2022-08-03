@@ -92,6 +92,15 @@ class RaceDataModel {
         lanes!.add(new Lanes.fromJson(v));
       });
     }
+    lanes = [for (var i=1;i<=12;i++) findPosition(i)];
+  }
+
+  findPosition(int pos){
+    for(var elem in lanes!){
+      if (elem.chicken?.position==pos){
+        return elem;
+      }
+    }
   }
 
   Map<String, dynamic> toJson() {

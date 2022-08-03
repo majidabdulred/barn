@@ -4,14 +4,12 @@ import 'package:get/get.dart';
 import 'package:majidapp/commonmodule/AppColor.dart';
 import 'package:majidapp/commonviews/textWidget.dart';
 import 'package:majidapp/pages/race_data_view.dart';
-import 'package:majidapp/productmodule/controllers/raceData_controller.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:majidapp/chickenmodule/controllers/raceData_controller.dart';
 
 
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
   final inpurt_race_id = TextEditingController();
-  RaceDataController raceData = Get.put(RaceDataController());
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +31,12 @@ class HomeView extends StatelessWidget {
         onTap: () async {
           if (inpurt_race_id.text.isNotEmpty)
           {
-            await raceData.fetchRaceData(int.parse(inpurt_race_id.text));
-            if (raceData.status.value=="FOUND"){
-              Get.to(RaceDataView(),arguments: raceData);
-            }
-            else if(raceData.status.value=="ERROR"){
-              Get.snackbar("Err", "ERROR");
-            } else if(raceData.status.value=="NOTFOUND"){
-              Get.snackbar("Err", "Not Found");
-            }
-            raceData.status.value="STARTED";
+            Get.to(RaceDataView(),arguments: inpurt_race_id.text);
           }
         },
         child: Container(
           height: 55,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: AppColor.color4
           ),
           child: Center(
@@ -56,7 +45,6 @@ class HomeView extends StatelessWidget {
 
         ),
       ),
-
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -81,16 +69,16 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: 100,)
             ,
-              Obx((){
-                if (raceData.status.value=="LOADING"){
-                  return SizedBox(
-                    height: 30,
-                      child: CircularProgressIndicator());
-                }
-                else {
-                  return SizedBox(height: 30,);
-                }
-              })
+              // Obx((){
+              //   if (raceData.isLoading.value){
+              //     return SizedBox(
+              //       height: 30,
+              //         child: CircularProgressIndicator());
+              //   }
+              //   else {
+              //     return SizedBox(height: 30,);
+              //   }
+              // })
           ],
         ),
       ),
