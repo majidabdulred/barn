@@ -1,5 +1,7 @@
 import 'dart:convert';
-RacesByChickenModel racesbyChickenModelFromJson(String str,int chickenId) => RacesByChickenModel.fromJson(json.decode(str),chickenId);
+
+RacesByChickenModel racesbyChickenModelFromJson(String str, int chickenId) =>
+    RacesByChickenModel.fromJson(json.decode(str), chickenId);
 
 class RacesByChickenModel {
   int? chickenId;
@@ -8,22 +10,22 @@ class RacesByChickenModel {
 
   RacesByChickenModel({this.count, this.rows});
 
-  RacesByChickenModel.fromJson(Map<String, dynamic> json,int chickenId) {
+  RacesByChickenModel.fromJson(Map<String, dynamic> json, int chickenId) {
     chickenId = chickenId;
     count = json['count'];
     if (json['rows'] != null) {
       rows = <Rows>[];
       json['rows'].forEach((v) {
-        rows!.add(new Rows.fromJson(v,chickenId));
+        rows!.add(Rows.fromJson(v, chickenId));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['count'] = this.count;
-    if (this.rows != null) {
-      data['rows'] = this.rows!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['count'] = count;
+    if (rows != null) {
+      data['rows'] = rows!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -56,43 +58,42 @@ class Rows {
   String? updatedAt;
   Result? result;
   Terrain? terrain;
-  late int? position;
+  dynamic position = "NA";
   late double? earnings;
   late dynamic totalearnings;
 
-
   Rows(
       {this.id,
-        this.name,
-        this.peckingOrder,
-        this.terrainId,
-        this.distance,
-        this.fee,
-        this.maxCapacity,
-        this.currentCapacity,
-        this.location,
-        this.minimumStartDelay,
-        this.status,
-        this.startTime,
-        this.prizePool,
-        this.paidStatus,
-        this.unlimitPO,
-        this.startsAt,
-        this.endsAt,
-        this.payoutAttempts,
-        this.type,
-        this.group,
-        this.feeUSD,
-        this.prizePoolUSD,
-        this.createdAt,
-        this.updatedAt,
-        this.result,
-        this.terrain,
-        this.position,
-        this.earnings,
+      this.name,
+      this.peckingOrder,
+      this.terrainId,
+      this.distance,
+      this.fee,
+      this.maxCapacity,
+      this.currentCapacity,
+      this.location,
+      this.minimumStartDelay,
+      this.status,
+      this.startTime,
+      this.prizePool,
+      this.paidStatus,
+      this.unlimitPO,
+      this.startsAt,
+      this.endsAt,
+      this.payoutAttempts,
+      this.type,
+      this.group,
+      this.feeUSD,
+      this.prizePoolUSD,
+      this.createdAt,
+      this.updatedAt,
+      this.result,
+      this.terrain,
+      this.position,
+      this.earnings,
       this.totalearnings});
 
-  Rows.fromJson(Map<String, dynamic> json,int chickenId) {
+  Rows.fromJson(Map<String, dynamic> json, int chickenId) {
     id = json['id'];
     name = json['name'];
     peckingOrder = json['peckingOrder'];
@@ -117,57 +118,54 @@ class Rows {
     prizePoolUSD = json['prizePoolUSD'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
-    result =
-    json['result'] != null ? new Result.fromJson(json['result']) : null;
+    result = json['result'] != null ? Result.fromJson(json['result']) : null;
     terrain =
-    json['terrain'] != null ? new Terrain.fromJson(json['terrain']) : null;
+        json['terrain'] != null ? Terrain.fromJson(json['terrain']) : null;
     setPosition(chickenId);
-
-
   }
 
-  void setPosition(int chickenId){
-    num lanes = result?.chickens?.length.toInt()??0;
-    for (var i=0;i<lanes;i++){
-      if (result?.chickens?[i].id==chickenId){
-        position=i+1;
-        earnings=result?.chickens?[i].raceEarnings;
-        totalearnings=earnings!-feeUSD;
+  void setPosition(int chickenId) {
+    num lanes = result?.chickens?.length.toInt() ?? 0;
+    for (var i = 0; i < lanes; i++) {
+      if (result?.chickens?[i].id == chickenId) {
+        position = i + 1;
+        earnings = result?.chickens?[i].raceEarnings;
+        totalearnings = earnings! - feeUSD;
       }
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['peckingOrder'] = this.peckingOrder;
-    data['terrainId'] = this.terrainId;
-    data['distance'] = this.distance;
-    data['fee'] = this.fee;
-    data['maxCapacity'] = this.maxCapacity;
-    data['currentCapacity'] = this.currentCapacity;
-    data['location'] = this.location;
-    data['minimumStartDelay'] = this.minimumStartDelay;
-    data['status'] = this.status;
-    data['startTime'] = this.startTime;
-    data['prizePool'] = this.prizePool;
-    data['paidStatus'] = this.paidStatus;
-    data['unlimitPO'] = this.unlimitPO;
-    data['startsAt'] = this.startsAt;
-    data['endsAt'] = this.endsAt;
-    data['payoutAttempts'] = this.payoutAttempts;
-    data['type'] = this.type;
-    data['group'] = this.group;
-    data['feeUSD'] = this.feeUSD;
-    data['prizePoolUSD'] = this.prizePoolUSD;
-    data['createdAt'] = this.createdAt;
-    data['updatedAt'] = this.updatedAt;
-    if (this.result != null) {
-      data['result'] = this.result!.toJson();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['peckingOrder'] = peckingOrder;
+    data['terrainId'] = terrainId;
+    data['distance'] = distance;
+    data['fee'] = fee;
+    data['maxCapacity'] = maxCapacity;
+    data['currentCapacity'] = currentCapacity;
+    data['location'] = location;
+    data['minimumStartDelay'] = minimumStartDelay;
+    data['status'] = status;
+    data['startTime'] = startTime;
+    data['prizePool'] = prizePool;
+    data['paidStatus'] = paidStatus;
+    data['unlimitPO'] = unlimitPO;
+    data['startsAt'] = startsAt;
+    data['endsAt'] = endsAt;
+    data['payoutAttempts'] = payoutAttempts;
+    data['type'] = type;
+    data['group'] = group;
+    data['feeUSD'] = feeUSD;
+    data['prizePoolUSD'] = prizePoolUSD;
+    data['createdAt'] = createdAt;
+    data['updatedAt'] = updatedAt;
+    if (result != null) {
+      data['result'] = result!.toJson();
     }
-    if (this.terrain != null) {
-      data['terrain'] = this.terrain!.toJson();
+    if (terrain != null) {
+      data['terrain'] = terrain!.toJson();
     }
     return data;
   }
@@ -186,17 +184,17 @@ class Result {
     if (json['chickens'] != null) {
       chickens = <Chickens>[];
       json['chickens'].forEach((v) {
-        chickens!.add(new Chickens.fromJson(v));
+        chickens!.add(Chickens.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['raceId'] = this.raceId;
-    if (this.chickens != null) {
-      data['chickens'] = this.chickens!.map((v) => v.toJson()).toList();
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['raceId'] = raceId;
+    if (chickens != null) {
+      data['chickens'] = chickens!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -210,13 +208,13 @@ class Chickens {
 
   Chickens.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    raceEarnings = json['raceEarnings']??0;
+    raceEarnings = json['raceEarnings'] ?? 0;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['raceEarnings'] = this.raceEarnings;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['raceEarnings'] = raceEarnings;
     return data;
   }
 }
@@ -233,9 +231,9 @@ class Terrain {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.name;
-    data['image'] = this.image;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = name;
+    data['image'] = image;
     return data;
   }
 }

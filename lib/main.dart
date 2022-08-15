@@ -3,9 +3,11 @@ import 'package:majidapp/commonmodule/AppString.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:majidapp/pages/HomePage.dart';
 import 'package:majidapp/pages/mainPage.dart';
 import 'package:majidapp/views/RacesTabView.dart';
-Future<void> main() async{
+
+Future<void> main() async {
   runApp(const MyApp());
 }
 
@@ -15,7 +17,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: AppString.fetchApiData,

@@ -1,6 +1,5 @@
-class DemoJsonData{
-  static const racedata =
-  """
+class DemoJsonData {
+  static const racedata = """
   {
     "id": 50000,
     "name": "Island Rock",
@@ -637,8 +636,7 @@ class DemoJsonData{
     ]
 }
   """;
-  static const racesbychicken =
-  """
+  static const racesbychicken = """
   {
     "count": 569,
     "rows": [
