@@ -6,7 +6,6 @@ import 'package:majidapp/commonviews/textWidget.dart';
 import 'package:majidapp/pages/race_data_view.dart';
 import 'package:majidapp/chickenmodule/controllers/raceData_controller.dart';
 
-
 class HomeView extends StatelessWidget {
   HomeView({Key? key}) : super(key: key);
   final inpurt_race_id = TextEditingController();
@@ -18,31 +17,31 @@ class HomeView extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         backgroundColor: AppColor.color1,
-        title: AdvancedText("ChickenDerby",25,FontWeight.w700,AppColor.color4),
+        title:
+            AdvancedText("ChickenDerby", 25, FontWeight.w700, AppColor.color4),
         actions: [
           IconButton(
               onPressed: () {
                 showSearch(context: context, delegate: CustomSeachDelegate());
               },
-              icon: Icon(Icons.search,color: AppColor.color4,))
+              icon: const Icon(
+                Icons.search,
+                color: AppColor.color4,
+              ))
         ],
       ),
       bottomNavigationBar: GestureDetector(
         onTap: () async {
-          if (inpurt_race_id.text.isNotEmpty)
-          {
-            Get.to(RaceDataView(),arguments: inpurt_race_id.text);
+          if (inpurt_race_id.text.isNotEmpty) {
+            Get.to(RaceDataView(), arguments: inpurt_race_id.text);
           }
         },
         child: Container(
           height: 55,
-          decoration: const BoxDecoration(
-              color: AppColor.color4
-          ),
+          decoration: const BoxDecoration(color: AppColor.color4),
           child: Center(
-            child: AdvancedText("SUBMIT",20,FontWeight.w600),
+            child: AdvancedText("SUBMIT", 20, FontWeight.w600),
           ),
-
         ),
       ),
       body: Center(
@@ -51,34 +50,37 @@ class HomeView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               width: 300,
               child: TextField(
                 controller: inpurt_race_id,
-                decoration: InputDecoration(
-                  labelText: "RaceID",
-                  labelStyle: TextStyle(fontSize: 20,color: AppColor.color4,fontFamily: "Roboto"),
-                  enabledBorder: OutlineInputBorder(borderSide: const BorderSide(color: AppColor.color3)),
-                  border: OutlineInputBorder()
-                ),
+                decoration: const InputDecoration(
+                    labelText: "RaceID",
+                    labelStyle: TextStyle(
+                        fontSize: 20,
+                        color: AppColor.color4,
+                        fontFamily: "Roboto"),
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColor.color3)),
+                    border: OutlineInputBorder()),
                 textAlign: TextAlign.center,
                 maxLength: 5,
                 keyboardType: TextInputType.number,
-
               ),
             ),
-            SizedBox(height: 100,)
-            ,
-              // Obx((){
-              //   if (raceData.isLoading.value){
-              //     return SizedBox(
-              //       height: 30,
-              //         child: CircularProgressIndicator());
-              //   }
-              //   else {
-              //     return SizedBox(height: 30,);
-              //   }
-              // })
+            const SizedBox(
+              height: 100,
+            ),
+            // Obx((){
+            //   if (raceData.isLoading.value){
+            //     return SizedBox(
+            //       height: 30,
+            //         child: CircularProgressIndicator());
+            //   }
+            //   else {
+            //     return SizedBox(height: 30,);
+            //   }
+            // })
           ],
         ),
       ),
@@ -86,7 +88,19 @@ class HomeView extends StatelessWidget {
   }
 }
 
+class BasePage extends StatelessWidget {
+  BasePage({Key? key}) : super(key: key);
+  RaceDataController raceData = Get.put(RaceDataController());
 
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      body: Center(
+        child: Text("Hello World"),
+      ),
+    );
+  }
+}
 
 class CustomSeachDelegate extends SearchDelegate {
   List<String> searchTerms = [
@@ -107,17 +121,22 @@ class CustomSeachDelegate extends SearchDelegate {
           onPressed: () {
             query = "";
           },
-          icon: const Icon(Icons.clear,color: AppColor.color4,)),
+          icon: const Icon(
+            Icons.clear,
+            color: AppColor.color4,
+          )),
     ];
   }
 
   @override
   Widget buildLeading(BuildContext context) {
     return IconButton(
-        onPressed: () {
-          close(context, null);
-        },
-        icon: Icon(Icons.arrow_back),color: AppColor.color4,);
+      onPressed: () {
+        close(context, null);
+      },
+      icon: const Icon(Icons.arrow_back),
+      color: AppColor.color4,
+    );
   }
 
   @override
@@ -132,7 +151,7 @@ class CustomSeachDelegate extends SearchDelegate {
         itemCount: matchQuery.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: NormalText(matchQuery[index],16),
+            title: NormalText(matchQuery[index], 16),
           );
         });
   }
@@ -149,23 +168,8 @@ class CustomSeachDelegate extends SearchDelegate {
         itemCount: matchQuery.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: NormalText(matchQuery[index],16),
+            title: NormalText(matchQuery[index], 16),
           );
         });
-  }
-}
-
-
-class BasePage extends StatelessWidget {
-  BasePage({Key? key}) : super(key: key);
-  RaceDataController raceData = Get.put(RaceDataController());
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text("Hello World"),
-      ),
-    );
   }
 }

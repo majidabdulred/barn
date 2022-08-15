@@ -6,12 +6,13 @@ import 'package:majidapp/views/PerformanceTabView.dart';
 import 'package:majidapp/views/RacesTabView.dart';
 
 class SingleChickenTabView extends StatefulWidget {
-  const SingleChickenTabView({ Key? key }) : super(key: key);
+  const SingleChickenTabView({Key? key}) : super(key: key);
   @override
   State<SingleChickenTabView> createState() => _SingleChickenTabViewState();
 }
 
-class _SingleChickenTabViewState extends State<SingleChickenTabView> with SingleTickerProviderStateMixin {
+class _SingleChickenTabViewState extends State<SingleChickenTabView>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
   @override
   void initState() {
@@ -23,7 +24,6 @@ class _SingleChickenTabViewState extends State<SingleChickenTabView> with Single
     //   }
     // })
   }
-
 
   @override
   void dispose() {
@@ -41,7 +41,9 @@ class _SingleChickenTabViewState extends State<SingleChickenTabView> with Single
           tabs: const [
             Tab(text: 'BASIC INFO'),
             Tab(text: 'PERFORMANCE'),
-            Tab(text: "RACES",)
+            Tab(
+              text: "RACES",
+            )
           ],
         ),
       ),
@@ -51,9 +53,8 @@ class _SingleChickenTabViewState extends State<SingleChickenTabView> with Single
           BasicTabView(chicken),
           PerformanceTabView(chicken),
           RacesTabView(chicken.id),
-    ],
-    ),
+        ],
+      ),
     );
   }
 }
-
