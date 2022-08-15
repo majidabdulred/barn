@@ -1,0 +1,6 @@
+{
+    // lint on enter
+    "editor.formatOnType": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnSave": true,
+}
