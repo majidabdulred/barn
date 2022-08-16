@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:majidapp/bindings/bindings.dart';
 import 'package:majidapp/commonmodule/AppString.dart';
 
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: HomeView(),
+      home: HomePage(),
+      initialBinding: InitalBinding(),
     );
   }
 }

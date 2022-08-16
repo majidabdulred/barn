@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:majidapp/chickenmodule/controllers/home_view_cont.dart';
 import 'package:majidapp/commonmodule/AppColor.dart';
 import 'package:majidapp/commonviews/textWidget.dart';
+import 'package:majidapp/views/open_races_view.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -47,7 +48,7 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
             controller: _tabx.controller,
-            children: [Text("Hello"), Text("Hello"), Text("Hello")]),
+            children: [OpenRacesView(), Text("Hello"), Text("Hello")]),
       ),
     );
   }
